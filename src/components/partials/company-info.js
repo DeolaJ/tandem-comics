@@ -7,7 +7,7 @@ const CompanyInfoWrapper = styled.section`
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
-  a:hover {
+  ul a:hover {
     border-bottom: 2px solid rgb(31, 32, 68);
   }
 `;
@@ -20,7 +20,7 @@ const CompanyInfo = () => {
         <p className="mb-4 text-lg">
           Do you have a request, want to join our team, or just want to say hi?
         </p>
-        <Button href="mailto:tandemcomics@gmail.com" text="Get in touch" />
+        <Button link="mailto:tandemcomics@gmail.com" text="Get in touch" />
       </article>
       <article>
         <h4 className="m-0 mb-5 text-sm font-semibold uppercase">Company</h4>
