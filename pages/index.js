@@ -1,17 +1,25 @@
 import Head from 'next/head';
+import Layout from '../src/components/partials/layout';
+import HomeBanner from '../src/components/partials/home-banner';
+// import HomeContent from '../src/components/home-content';
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Tandem Comics</title>
+        <meta name="twitter:title" content="Tandem Comics" />
+        <meta property="og:title" content="Tandem Comics" />
+        <meta property="og:url" content="www.tandemcomics.com" />
+        <meta name="twitter:site" content="Tandem Comics" />
       </Head>
 
-      <main className="text-center">
-        <h1 className="text-7xl pt-12 pb-10">Tandem Comics</h1>
-        <h3 className="text-2xl uppercase">Coming Soon</h3>
-      </main>
+      <Layout>
+        {/* <HomeContent /> */}
+        <HomeBanner />
+      </Layout>
     </>
   );
-}
+};
+
+export default Home;
