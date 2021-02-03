@@ -70,7 +70,7 @@ const MobileMenu = ({ navItems, path }) => {
   return (
     <>
       <MobileButton
-        className="bg-transparent border-none shadow-none outline-none cursor-pointer menu-button w-11 md:hidden focus:outline-none"
+        className="block bg-transparent border-none shadow-none outline-none cursor-pointer menu-button w-11 md:hidden focus:outline-none"
         onClick={toggleOpen}
         // eslint-disable-next-line prettier/prettier
       >
@@ -84,30 +84,32 @@ const MobileMenu = ({ navItems, path }) => {
           </>
         )}
       </MobileButton>
-      <MobileMenuWrapper
-        className={`mobile-menu shadow-sm fixed right-0 top-16 text-black bg-white md:hidden ${open}`}
-        // eslint-disable-next-line prettier/prettier
-      >
-        <MobileMenuList className="p-2 m-0">
-          {navItems.map((navItem) => (
-            <li className="block p-2 mx-0 my-2" key={navItem.id}>
-              <Link
-                className="p-0 text-sm font-medium no-underline uppercase"
-                href={navItem.link}
-                // eslint-disable-next-line prettier/prettier
-              >
-                <NavLink
-                  active={path === navItem.link}
-                  className="p-0 text-sm font-medium no-underline uppercase cursor-pointer hover:border hover:border-solid"
+      {open && (
+        <MobileMenuWrapper
+          className={`mobile-menu shadow-sm fixed right-0 top-16 text-black bg-white md:hidden ${open}`}
+          // eslint-disable-next-line prettier/prettier
+        >
+          <MobileMenuList className="p-2 m-0">
+            {navItems.map((navItem) => (
+              <li className="block p-2 mx-0 my-2" key={navItem.id}>
+                <Link
+                  className="p-0 text-sm font-medium no-underline uppercase"
+                  href={navItem.link}
                   // eslint-disable-next-line prettier/prettier
                 >
-                  <span>{navItem.text}</span>
-                </NavLink>
-              </Link>
-            </li>
-          ))}
-        </MobileMenuList>
-      </MobileMenuWrapper>
+                  <NavLink
+                    active={path === navItem.link}
+                    className="p-0 text-sm font-medium no-underline uppercase cursor-pointer hover:border hover:border-solid"
+                    // eslint-disable-next-line prettier/prettier
+                  >
+                    <span>{navItem.text}</span>
+                  </NavLink>
+                </Link>
+              </li>
+            ))}
+          </MobileMenuList>
+        </MobileMenuWrapper>
+      )}
     </>
   );
 };

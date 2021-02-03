@@ -14,7 +14,7 @@ const Home = () => {
         <meta name="twitter:site" content="Tandem Comics" />
       </Head>
 
-      <Layout>
+      <Layout style={{ minHeight: '60vh' }}>
         {/* <HomeContent /> */}
         <HomeBanner />
       </Layout>

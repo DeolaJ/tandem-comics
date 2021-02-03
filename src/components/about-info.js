@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const AboutInfoWrapper = styled.section`
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-`;
+const AboutInfoWrapper = styled.section``;
 
 const mission =
   'Tandem Comics is a platform for Gospel Art/Comic creators to share their content. Gospel artists will get publicity for their work, get paid for their work through endorsements, partnerships and ecommerce stores. We are committed to pushing the gospel of Christ to every end of the earth.';
@@ -14,7 +11,7 @@ const vision =
 
 const AboutInfo = () => {
   return (
-    <AboutInfoWrapper className="grid">
+    <AboutInfoWrapper>
       <article>
         <h1 className="mb-6 text-4xl">About Tandem Comics</h1>
         <h2 className="m-0 mb-1 text-2xl">Mission</h2>
