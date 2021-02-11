@@ -9,16 +9,19 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "autoprefixer": "^10.2.3",
     "next": "10.0.4",
+    "postcss": "^8.2.4",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "styled-components": "^5.2.1",
-    "tailwindcss": "^2.0.2",
-    "postcss": "^8.2.4"
+    "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.13",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",

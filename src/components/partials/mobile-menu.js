@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 import Link from 'next/link';
 import NavLink from '../styled/navlink';
 
@@ -45,7 +46,6 @@ const MobileButton = styled.button`
 `;
 
 const MobileMenuWrapper = styled.div`
-  top: 70px;
   z-index: 3;
   transform: translateX(200px);
   width: 200px;
@@ -86,7 +86,7 @@ const MobileMenu = ({ navItems, path }) => {
       </MobileButton>
       {open && (
         <MobileMenuWrapper
-          className={`mobile-menu shadow-sm fixed right-0 top-16 text-black bg-white md:hidden ${open}`}
+          className={`mobile-menu shadow-sm fixed right-0 top-20 text-black bg-white md:hidden ${open}`}
           // eslint-disable-next-line prettier/prettier
         >
           <MobileMenuList className="p-2 m-0">

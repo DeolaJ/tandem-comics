@@ -1,19 +1,23 @@
-import { createGlobalStyle } from 'styled-components';
+import { Global, css } from '@emotion/react';
 
-const GlobalStyle = createGlobalStyle`
-  html {
-    font-size: 18px;
-  }
+const GlobalStyle = () => (
+  <Global
+    styles={css`
+      html {
+        font-size: 18px;
+      }
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Khand', Helvetica, Sans-Serif;
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Khand', Helvetica, Sans-Serif;
 
-    * {
-      letter-spacing: .02rem;
-    }
-  }
-`;
+        * {
+          letter-spacing: 0.02rem;
+        }
+      }
+    `}
+  />
+);
 
 export default GlobalStyle;

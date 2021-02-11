@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const HomeBannerWrapper = styled.section`
   background-image: url('https://res.cloudinary.com/dzpntisxj/image/upload/c_scale,w_1700/v1612106484/tandem-art/IMG_20210109_132451_553_ie0gx0.jpg');
