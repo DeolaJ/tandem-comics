@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const RoadmapInfoWrapper = styled.section``;
 

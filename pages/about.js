@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import Layout from '../src/components/partials/layout';
 import AboutInfo from '../src/components/about-info';

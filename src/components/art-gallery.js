@@ -1,3 +1,4 @@
+import React from 'react';
 import ArtGrid from './art-grid';
 
 const drawings = [
