@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ArtGrid from './art-grid';
 
 const drawings = [
@@ -48,6 +49,10 @@ const drawings = [
   },
 ];
 
-const ArtGallery = () => <ArtGrid drawings={drawings} />;
+const ArtGallery = ({ images }) => <ArtGrid drawings={images} />;
+
+ArtGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default ArtGallery;
