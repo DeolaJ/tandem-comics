@@ -21,24 +21,24 @@ const ArtCard = ({ drawing }) => {
         <div className="w-4/5 h-3 bg-gray-200" />
       </div>
 
-      {drawing.id && (
+      {drawing.sys.id && (
         <>
           <Image
             className="absolute left-0 block object-cover w-full rounded-lg shadow-artcard"
             onLoad={removePlaceholder}
             onError={removePlaceholder}
-            src={drawing.download_img}
-            alt={drawing.title}
+            src={drawing.fields.imageUrl}
+            alt={drawing.fields.title}
             width={840}
             height={1015}
           />
 
           <div className="py-2 mb-2">
-            <h4 className="mb-1 text-lg font-medium text-gray-800">{drawing.title}</h4>
-            <p className="m-0 text-sm text-gray-700">{drawing.description}</p>
+            <h4 className="mb-1 text-lg font-medium text-gray-800">{drawing.fields.title}</h4>
+            <p className="m-0 text-sm text-gray-700">{drawing.fields.description}</p>
           </div>
 
-          <Button text="Download" download sub link={drawing.download_img} />
+          <Button text="Download" download sub link={drawing.fields.imageUrl} />
         </>
       )}
     </article>
@@ -47,12 +47,14 @@ const ArtCard = ({ drawing }) => {
 
 ArtCard.propTypes = {
   drawing: PropTypes.shape({
-    id: PropTypes.number,
-    thumb_img: PropTypes.string,
-    regular_img: PropTypes.string,
-    download_img: PropTypes.string,
-    title: PropTypes.string,
-    description: PropTypes.string,
+    fields: PropTypes.objectOf(PropTypes.any).isRequired,
+    sys: PropTypes.objectOf(PropTypes.any),
+    // id: PropTypes.number,
+    // thumb_img: PropTypes.string,
+    // regular_img: PropTypes.string,
+    // imageUrl: PropTypes.string,
+    // title: PropTypes.string,
+    // description: PropTypes.string,
   }).isRequired,
 };
 
