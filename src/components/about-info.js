@@ -11,14 +11,14 @@ const vision =
 
 const AboutInfo = () => {
   return (
-    <AboutInfoWrapper>
+    <AboutInfoWrapper className="my-12 mb-28">
       <article>
-        <h1 className="mb-6 text-4xl">About Tandem Comics</h1>
-        <h2 className="m-0 mb-1 text-2xl">Mission</h2>
-        <p className="mb-6 text-lg leading-8">{mission}</p>
+        <h1 className="my-10 text-3xl">About Tandem Comics</h1>
+        <h2 className="m-0 mb-1 text-xl">Mission</h2>
+        <p className="mb-10 text-base leading-6">{mission}</p>
 
-        <h2 className="m-0 mb-1 text-2xl">Vision</h2>
-        <p className="mb-6 text-lg leading-8">{vision}</p>
+        <h2 className="m-0 mb-1 text-xl">Vision</h2>
+        <p className="mb-10 text-base leading-6">{vision}</p>
       </article>
     </AboutInfoWrapper>
   );

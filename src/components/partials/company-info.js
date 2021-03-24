@@ -16,28 +16,34 @@ const CompanyInfo = () => {
   return (
     <CompanyInfoWrapper className="md:grid">
       <article className="mb-10 md:mb-0">
-        <h4 className="m-0 mb-5 text-sm font-semibold uppercase">Keep in touch</h4>
-        <p className="mb-4 text-lg">
+        <h4 className="m-0 mb-3 text-sm font-semibold uppercase text-custom-violet">
+          Keep in touch
+        </h4>
+        <p className="mb-4 text-sm">
           Do you have a request, want to join our team, or just want to say hi?
         </p>
-        <Button link="mailto:tandemcomics@gmail.com" text="Get in touch" />
+        <Button
+          link="mailto:tandemcomics@gmail.com"
+          text="Get in touch"
+          className="px-2 py-1 text-xs"
+        />
       </article>
       <article>
-        <h4 className="m-0 mb-5 text-sm font-semibold uppercase">Company</h4>
+        <h4 className="m-0 mb-3 text-sm font-semibold uppercase text-custom-violet">Company</h4>
         <ul>
-          <li className="mb-2 hover:border hover:border-solid">
+          <li className="mb-1 hover:border hover:border-solid">
             <Link href="/about">
-              <a className="text-base">About</a>
+              <a className="text-sm leading-3">About</a>
             </Link>
           </li>
-          <li className="mb-2 hover:border hover:border-solid">
+          <li className="mb-1 hover:border hover:border-solid">
             <Link href="/meet-the-characters">
-              <a className="text-base">Meet the Characters</a>
+              <a className="text-sm leading-3">Meet the Characters</a>
             </Link>
           </li>
-          <li className="mb-2 hover:border hover:border-solid">
+          <li className="mb-1 hover:border hover:border-solid">
             <Link href="/roadmap">
-              <a className="text-base">RoadMap</a>
+              <a className="text-sm leading-3">RoadMap</a>
             </Link>
           </li>
         </ul>

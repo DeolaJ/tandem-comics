@@ -1,11 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { createClient } from 'contentful';
+
 import Layout from '../src/components/partials/layout';
 import ArtGallery from '../src/components/art-gallery';
 
-const Art = ({ images }) => {
+const Art = ({ artPosts }) => {
   return (
     <>
       <Head>
@@ -17,32 +17,27 @@ const Art = ({ images }) => {
       </Head>
 
       <Layout className="px-4 py-4 md:px-8 md:py-8">
-        <h1 className="mb-3 text-4xl">Art</h1>
-        <ArtGallery images={images} />
+        <h1 className="my-8 text-3xl text-center text-custom-violet">All Digital Paintings</h1>
+        <ArtGallery artPosts={artPosts} />
       </Layout>
     </>
   );
 };
 
 Art.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  artPosts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export async function getStaticProps() {
-  // Create an instance of the Contentful JavaScript SDK
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  });
+  const artQuery = encodeURIComponent(`*[ _type == "art" ] | order(_createdAt desc)`);
 
-  // Fetch all entries of content_type `blogPost`
-  const images = await client
-    .getEntries({ content_type: 'art' })
-    .then((response) => response.items);
+  const artUrl = `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/data/query/production?query=${artQuery}`;
+
+  const artResult = await fetch(artUrl).then((res) => res.json());
 
   return {
     props: {
-      images,
+      artPosts: artResult.result || [],
     },
   };
 }

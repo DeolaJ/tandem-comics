@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import DesktopMenu from './partials/desktop-menu';
@@ -12,8 +12,8 @@ const navItems = [
   },
   {
     id: 2,
-    text: 'Meet the Characters',
-    link: '/meet-the-characters',
+    text: 'Comics Templates',
+    link: '/comics-templates',
   },
   {
     id: 3,
@@ -35,10 +35,26 @@ const navItems = [
 const Nav = () => {
   const router = useRouter();
   const path = router.pathname;
+  const [scrolling, setScrolling] = useState(false);
+
+  const scrollHandler = useRef(() => {
+    if (window.scrollY > 0) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  });
+
+  useEffect(() => {
+    const scrollFunc = scrollHandler.current;
+    window.addEventListener('scroll', scrollFunc);
+
+    return () => window.removeEventListener('scroll', scrollFunc);
+  });
 
   return (
-    <header className="sticky top-0 z-10 bg-white shadow-sm">
-      <nav className="flex items-center justify-between px-6 py-8 md:px-10">
+    <header className={`sticky top-0 z-50 bg-white ${scrolling ? 'shadow-sm' : null}`}>
+      <nav className="flex items-center justify-between px-6 py-4 md:px-10 text-custom-violet">
         <Image
           src="/logo-red.png"
           width={50}

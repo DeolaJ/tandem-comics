@@ -4,7 +4,14 @@ module.exports = {
   purge: ['./pages/**/*.{js,jsx}', './src/components/**/*.{js,jsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        custom: {
+          violet: '#441151',
+          popstar: '#B6465F',
+        },
+      },
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -28,8 +35,8 @@ module.exports = {
     },
     gridTemplateColumns: {
       artgrid: 'repeat(auto-fill, 220px)',
-      artgridMd: 'repeat(auto-fill, 330px)',
-      artgridLg: 'repeat(auto-fill, 400px)',
+      artgridMd: 'repeat(auto-fill, 260px)',
+      artgridLg: 'repeat(auto-fill, 300px)',
     },
   },
   variants: {
