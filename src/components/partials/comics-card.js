@@ -1,19 +1,12 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
-import styled from '@emotion/styled';
 import BlockContent from '@sanity/block-content-to-react';
 import Link from 'next/link';
 
 import Button from './button';
 
-const ImageWrapper = styled.div`
-  > img {
-    transition: visibility 0.5s ease;
-  }
-`;
-
-const ArtCard = ({ drawing }) => {
+const ComicsCard = ({ drawing, type, activeImage }) => {
   const [visible, setVisible] = useState(false);
   const refPlaceholder = useRef();
   const refContentPlaceholder = useRef();
@@ -35,19 +28,17 @@ const ArtCard = ({ drawing }) => {
 
       {drawing.mainImage && (
         <>
-          <ImageWrapper>
-            <Image
-              className={`absolute top-0 left-0 block object-cover w-full rounded-lg shadow-artcard ${
-                visible ? 'visible' : 'invisible'
-              }`}
-              onLoad={removePlaceholder}
-              onError={removePlaceholder}
-              src={drawing.mainImage}
-              alt={drawing.title}
-              width={840}
-              height={1015}
-            />
-          </ImageWrapper>
+          <Image
+            className={`absolute left-0 block object-cover w-full rounded-lg shadow-artcard ${
+              visible ? 'visible' : 'invisible'
+            }`}
+            onLoad={removePlaceholder}
+            onError={removePlaceholder}
+            src={type !== 'single' ? drawing.mainImage[0] : activeImage}
+            alt={drawing.title}
+            width={840}
+            height={840}
+          />
 
           <div className="py-2 mb-2">
             <Link href={`/comics/${drawing.slug.current}`}>
@@ -62,20 +53,32 @@ const ArtCard = ({ drawing }) => {
             </p>
           </div>
 
-          <Button text="Download" download sub link={drawing.mainImage} />
+          <Button
+            text="Download"
+            download
+            sub
+            link={type !== 'single' ? drawing.mainImage[0] : activeImage}
+          />
         </>
       )}
     </article>
   );
 };
 
-ArtCard.propTypes = {
+ComicsCard.defaultProps = {
+  type: '',
+  activeImage: '',
+};
+
+ComicsCard.propTypes = {
   drawing: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    mainImage: PropTypes.string.isRequired,
+    mainImage: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
     body: PropTypes.arrayOf(PropTypes.any).isRequired,
     slug: PropTypes.objectOf(PropTypes.any),
   }).isRequired,
+  type: PropTypes.string,
+  activeImage: PropTypes.string,
 };
 
-export default ArtCard;
+export default ComicsCard;

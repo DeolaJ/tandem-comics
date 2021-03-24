@@ -2,34 +2,40 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+
 import Layout from '../../src/components/partials/layout';
-import ArtCard from '../../src/components/partials/art-card';
+import ComicsCard from '../../src/components/partials/comics-card';
+import PaginatedPosts from '../../src/components/partials/paginated-posts';
+
 import Comments from '../../src/components/partials/comments';
 import Form from '../../src/components/partials/form';
 import Like from '../../src/components/partials/like';
 
-const ArtPage = ({ image }) => {
+const ComicsPage = ({ comicsPost }) => {
   return (
     <>
       <Head>
         <title>
-          {image.title}
+          {comicsPost.title}
           {' | Art'}
         </title>
-        <meta name="twitter:title" content={image.title} />
-        <meta property="og:title" content={image.title} />
-        <meta name="twitter:site" content={image.title} />
-        <meta property="og:url" content={`www.tandemcomics.com/art/${image.slug.current}`} />
+        <meta name="twitter:title" content={comicsPost.title} />
+        <meta property="og:title" content={comicsPost.title} />
+        <meta name="twitter:site" content={comicsPost.title} />
+        <meta
+          property="og:url"
+          content={`www.tandemcomics.com/comics/${comicsPost.slug.current}`}
+        />
       </Head>
 
       <Layout className="px-4 py-4 md:px-8 md:py-8">
-        <h1 className="my-8 text-4xl">{image.title}</h1>
+        <h1 className="my-8 text-4xl">{comicsPost.title}</h1>
         <section className="max-w-sm">
-          <ArtCard drawing={image} />
+          <PaginatedPosts content={comicsPost} ListComponent={ComicsCard} type="single" />
         </section>
-        <Like _id={image._id} />
+        <Like _id={comicsPost._id} />
         <article className="flex items-center my-5 -ml-3 -mr-3">
-          {image.tags.map((tag) => (
+          {comicsPost.tags.map((tag) => (
             <p
               key={tag}
               className="px-3 py-2 mx-3 text-xs text-purple-700 bg-purple-100 rounded-md">
@@ -37,19 +43,19 @@ const ArtPage = ({ image }) => {
             </p>
           ))}
         </article>
-        <Comments comments={image.comments} />
-        <Form _id={image._id} />
+        <Comments comments={comicsPost.comments} />
+        <Form _id={comicsPost._id} />
       </Layout>
     </>
   );
 };
 
-ArtPage.propTypes = {
-  image: PropTypes.objectOf(PropTypes.any).isRequired,
+ComicsPage.propTypes = {
+  comicsPost: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export async function getStaticProps(context) {
-  const query = encodeURIComponent(`*[_type == "art" && slug.current == "${context.params.slug}"] | order(_updatedAt desc) {
+  const query = encodeURIComponent(`*[_type == "comics" && slug.current == "${context.params.slug}"] | order(_updatedAt desc) {
     body,
     title,
     slug,
@@ -74,21 +80,21 @@ export async function getStaticProps(context) {
 
   const result = await fetch(url).then((res) => res.json());
 
-  const image = result.result[0];
+  const comicsPost = result.result[0];
 
-  if (!image) {
+  if (!comicsPost) {
     return { props: {} };
   }
 
   return {
     props: {
-      image,
+      comicsPost,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const query = encodeURIComponent(`*[_type == "art" ] {
+  const query = encodeURIComponent(`*[_type == "comics" ] {
     slug,
   }`);
   const url = `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/data/query/production?query=${query}`;
@@ -103,4 +109,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default ArtPage;
+export default ComicsPage;

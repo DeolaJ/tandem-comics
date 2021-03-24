@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 const SocialWrapper = styled.article`
   ul {
     max-width: 200px;
+    background: #fff2f3;
   }
 
   svg {
@@ -18,13 +19,13 @@ const SocialWrapper = styled.article`
     background: #771d0d;
     left: 0;
     top: 38%;
-    z-index: -1;
+    z-index: 0;
   }
 `;
 
 const Social = () => (
-  <SocialWrapper className="relative w-full my-8 mt-10 text-center">
-    <ul className="p-0 px-4 m-0 mx-auto list-none bg-white">
+  <SocialWrapper className="relative w-full my-8 text-center">
+    <ul className="relative inline-flex p-0 px-4 m-0 mx-auto list-none bg-white">
       <li className="inline-block w-5 mx-4">
         <a
           href="https://www.instagram.com/tandem_comics"

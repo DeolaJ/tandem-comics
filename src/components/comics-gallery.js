@@ -1,57 +1,12 @@
 import React from 'react';
-import ArtGrid from './art-grid';
+import PropTypes from 'prop-types';
 
-const comicDrawings = [
-  {
-    id: 1,
-    thumb_img: '',
-    regular_img: '',
-    download_img: '',
-    title: '',
-    description: '',
-  },
-  {
-    id: 2,
-    thumb_img: '',
-    regular_img: '',
-    download_img: '',
-    title: '',
-    description: '',
-  },
-  {
-    id: 3,
-    thumb_img: '',
-    regular_img: '',
-    download_img: '',
-    title: '',
-    description: '',
-  },
-  {
-    id: 4,
-    thumb_img: '',
-    regular_img: '',
-    download_img: '',
-    title: '',
-    description: '',
-  },
-  {
-    id: 5,
-    thumb_img: '',
-    regular_img: '',
-    download_img: '',
-    title: '',
-    description: '',
-  },
-  {
-    id: 6,
-    thumb_img: '',
-    regular_img: '',
-    download_img: '',
-    title: '',
-    description: '',
-  },
-];
+import ComicsGrid from './comics-grid';
 
-const ComicsGallery = () => <ArtGrid drawings={comicDrawings} />;
+const ComicsGallery = ({ comicsPosts }) => <ComicsGrid comicsPosts={comicsPosts} />;
+
+ComicsGallery.propTypes = {
+  comicsPosts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default ComicsGallery;
