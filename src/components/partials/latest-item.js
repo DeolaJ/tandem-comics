@@ -27,7 +27,7 @@ const LatestItem = ({ content, type }) => {
 
   return (
     <article className="relative w-full">
-      <div className="w-full bg-gray-100 h-80 shadow-artcard" ref={refPlaceholder} />
+      <div className="absolute w-full bg-gray-100 h-full shadow-artcard" ref={refPlaceholder} />
 
       <div className="absolute w-full bottom-5 left-5" ref={refContentPlaceholder}>
         <div className="w-2/4 h-4 mb-3 bg-gray-600" />
